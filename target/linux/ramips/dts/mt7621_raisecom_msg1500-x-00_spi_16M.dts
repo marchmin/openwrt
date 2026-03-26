@@ -6,8 +6,8 @@
 #include <dt-bindings/input/input.h>
 
 / {
-	compatible = "raisecom,msg1500-x-00", "mediatek,mt7621-soc";
-	model = "RAISECOM MSG1500 X.00";
+	compatible = "raisecom,msg1500-x-00_spi_16M", "mediatek,mt7621-soc";
+	model = "RAISECOM MSG1500 X.00_SPI_16M";
 
 	aliases {
 		led-boot = &led_usb;
@@ -62,60 +62,48 @@
 	};
 };
 
-&nand {
+&spi0 {
 	status = "okay";
 
-	partitions {
-		compatible = "fixed-partitions";
-		#address-cells = <1>;
-		#size-cells = <1>;
+	flash@0 {
+		compatible = "jedec,spi-nor";
+		reg = <0>;
+		spi-max-frequency = <50000000>;
 
-		partition@0 {
-			label = "Bootloader";
-			reg = <0x0 0x80000>;
-			read-only;
-		};
-
-		partition@80000 {
-			label = "Config";
-			reg = <0x80000 0x80000>;
-			read-only;
-
-			compatible = "nvmem-cells";
+		partitions {
+			compatible = "fixed-partitions";
 			#address-cells = <1>;
 			#size-cells = <1>;
 
-			macaddr_config_8014: macaddr@8014 {
-				reg = <0x8014 0x11>;
+			partition@0 {
+				label = "u-boot";
+				reg = <0x0 0x30000>;
+				read-only;
 			};
 
-			macaddr_config_8036: macaddr@8036 {
-				reg = <0x8036 0x11>;
+			partition@30000 {
+				label = "u-boot-env";
+				reg = <0x30000 0x10000>;
+				read-only;
 			};
-		};
 
-		factory: partition@100000 {
-			label = "Factory";
-			reg = <0x100000 0x40000>;
-			read-only;
-
-			compatible = "nvmem-cells";
-			#address-cells = <1>;
-			#size-cells = <1>;
-
-			macaddr_factory_4: macaddr@4 {
-				reg = <0x4 0x6>;
+			factory: partition@40000 {
+				label = "factory";
+				reg = <0x40000 0x10000>;
+				read-only;
 			};
-		};
 
-		partition@140000 {
-			label = "kernel";
-			reg = <0x140000 0x400000>;
-		};
+			partition@50000 {
+				label = "permanent_config";
+				reg = <0x50000 0x50000>;
+				read-only;
+			};
 
-		partition@540000 {
-			label = "ubi";
-			reg = <0x540000 0x7a40000>;
+			partition@a0000 {
+				compatible = "denx,uimage";
+				label = "firmware";
+				reg = <0xa0000 0xf60000>;
+			};
 		};
 	};
 };
@@ -137,8 +125,8 @@
 };
 
 &gmac0 {
-	nvmem-cells = <&macaddr_config_8014>;
-	nvmem-cell-names = "mac-address-ascii";
+	nvmem-cells = <&macaddr_factory_e000>;
+	nvmem-cell-names = "mac-address";
 };
 
 &gmac1 {
@@ -146,8 +134,8 @@
 	label = "wan";
 	phy-handle = <&ethphy4>;
 
-	nvmem-cells = <&macaddr_config_8036>;
-	nvmem-cell-names = "mac-address-ascii";
+	nvmem-cells = <&macaddr_factory_e006>;
+	nvmem-cell-names = "mac-address";
 };
 
 &mdio {
@@ -184,5 +172,23 @@
 	gpio {
 		groups = "i2c", "jtag", "uart3", "wdt";
 		function = "gpio";
+	};
+};
+
+&factory {
+	compatible = "nvmem-cells";
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	macaddr_factory_4: macaddr@4 {
+		reg = <0x4 0x6>;
+	};
+
+	macaddr_factory_e000: macaddr@e000 {
+		reg = <0xe000 0x6>;
+	};
+
+	macaddr_factory_e006: macaddr@e006 {
+		reg = <0xe006 0x6>;
 	};
 };

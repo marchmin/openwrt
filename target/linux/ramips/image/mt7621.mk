@@ -2043,9 +2043,9 @@ define Device/raisecom_msg1500-x-00_spi_16M
   IMAGE_SIZE := 15744k
   DEVICE_VENDOR := RAISECOM
   DEVICE_MODEL := MSG1500
-  DEVICE_ALT0_VENDOR := Nokia
+  DEVICE_ALT0_VENDOR := RAISECOM
   DEVICE_ALT0_MODEL := msg1500
-  SUPPORTED_DEVICES += A-040W-Q
+  SUPPORTED_DEVICES += k2p
   DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools kmod-usb3 kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += raisecom_msg1500-x-00_spi_16M

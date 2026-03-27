@@ -1,0 +1,158 @@
+#include "mt7621.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	compatible = "phicomm,k2p_usb", "mediatek,mt7621-soc";
+	model = "Phicomm K2P";
+
+	aliases {
+		led-boot = &led_usb;
+		led-failsafe = &led_usb;
+		led-upgrade = &led_usb;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		
+		wlan2g {
+			label = "blue:wlan2g";
+			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
+			linux,default-trigger = "phy0radio";
+		};
+
+		wlan5g {
+			label = "blue:wlan5g";
+			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
+			linux,default-trigger = "phy1radio";
+		};
+
+		usb {
+			label = "blue:usb";
+			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
+			trigger-sources = <&ehci_port2>;
+			linux,default-trigger = "usbport";
+		};
+	};
+
+	keys {
+		compatible = "gpio-keys";
+
+		reset {
+			label = "reset";
+			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_RESTART>;
+		};
+
+		wps {
+			label = "wps";
+			gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_WPS_BUTTON>;
+		};
+
+		wifi {
+			label = "wifi";
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_RFKILL>;
+		};
+	};
+};
+
+&spi0 {
+	status = "okay";
+
+	flash@0 {
+		compatible = "jedec,spi-nor";
+		reg = <0>;
+		spi-max-frequency = <50000000>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "u-boot";
+				reg = <0x0 0x30000>;
+				read-only;
+			};
+
+			partition@30000 {
+				label = "u-boot-env";
+				reg = <0x30000 0x10000>;
+				read-only;
+			};
+
+			factory: partition@40000 {
+				label = "factory";
+				reg = <0x40000 0x10000>;
+				read-only;
+			};
+
+			partition@50000 {
+				label = "permanent_config";
+				reg = <0x50000 0x50000>;
+				read-only;
+			};
+
+			partition@a0000 {
+				compatible = "denx,uimage";
+				label = "firmware";
+				reg = <0xa0000 0xf60000>;
+			};
+		};
+	};
+};
+
+&pcie {
+	status = "okay";
+};
+
+&xhci {
+	status = "okay";
+};
+
+&u3phy1 {
+	status = "okay";
+};
+
+&pcie0 {
+	mt76@0,0 {
+		reg = <0x0000 0 0 0 0>;
+		mediatek,mtd-eeprom = <&factory 0x0>;
+	};
+};
+
+&gmac0 {
+	mtd-mac-address = <&factory 0xe000>;
+};
+
+&gmac1 {
+	mtd-mac-address = <&factory 0xe006>;
+	status = "okay";
+};
+
+&gsw {
+	mediatek,portmap = "llllw";
+	status = "okay";
+};
+
+&hnat {
+	mtketh-wan = "eth1";
+	mtketh-ppd = "eth0";
+	mtketh-lan = "eth0";
+	mtketh-max-gmac = <2>;
+	/delete-property/ mtkdsa-wan-port;
+};
+
+&switch0 {
+	status = "disabled";
+};
+
+&state_default {
+	gpio {
+		groups = "i2c", "jtag", "uart3", "wdt";
+		function = "gpio";
+	};
+};

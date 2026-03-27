@@ -2626,6 +2626,18 @@ define Device/phicomm_k2p
 endef
 TARGET_DEVICES += phicomm_k2p
 
+define Device/phicomm_k2p_usb
+  $(Device/dsa-migration)
+  IMAGE_SIZE := 15744k
+  DEVICE_VENDOR := Phicomm
+  DEVICE_MODEL := K2P
+  DEVICE_ALT0_VENDOR := Phicomm
+  DEVICE_ALT0_MODEL := KE 2P
+  SUPPORTED_DEVICES += k2p
+  DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools
+endef
+TARGET_DEVICES += phicomm_k2p_usb
+
 define Device/planex_vr500
   $(Device/dsa-migration)
   $(Device/uimage-lzma-loader)

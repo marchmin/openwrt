@@ -2674,7 +2674,7 @@ define Device/raisecom_msg1500-x-00_16M
   DEVICE_VARIANT := X.00
   DEVICE_ALT0_VENDOR := RAISECOM
   DEVICE_ALT0_MODEL := MSG1500-X
-  DEVICE_PACKAGES := kmod-mt7615-firmware kmod-usb3 kmod-usb-ledtrig-usbport
+  DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools kmod-usb3 kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += raisecom_msg1500-x-00_16M
 

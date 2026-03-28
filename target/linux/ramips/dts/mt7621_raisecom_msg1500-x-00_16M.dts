@@ -117,10 +117,6 @@
 	status = "okay";
 };
 
-&u3phy1 {
-	status = "okay";
-};
-
 &pcie0 {
 	wifi@0,0 {
 		compatible = "mediatek,mt76";

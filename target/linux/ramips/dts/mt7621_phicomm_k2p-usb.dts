@@ -5,7 +5,7 @@
 #include <dt-bindings/leds/common.h>
 
 / {
-	compatible = "phicomm,k2p_usb", "mediatek,mt7621-soc";
+	compatible = "phicomm,k2p-usb", "mediatek,mt7621-soc";
 	model = "Phicomm K2P";
 
 	aliases {

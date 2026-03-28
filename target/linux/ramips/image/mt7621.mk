@@ -2056,8 +2056,8 @@ define Device/raisecom_msg1500-x-00-16M
   DEVICE_VENDOR := raisecom
   DEVICE_MODEL := msg1500
   DEVICE_VARIANT := x-00-16M
-  DEVICE_ALT0_VENDOR := Nokia
-  DEVICE_ALT0_MODEL := A-040W-Q
+  DEVICE_ALT0_VENDOR := Phicomm
+  DEVICE_ALT0_MODEL := KE 2P
   DEVICE_PACKAGES := kmod-mt7615-firmware kmod-usb3 \
 	kmod-usb-ledtrig-usbport -uboot-envtools
 endef

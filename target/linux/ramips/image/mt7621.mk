@@ -2008,8 +2008,8 @@ define Device/phicomm_k2p
   DEVICE_VENDOR := Phicomm
   DEVICE_MODEL := K2P
   DEVICE_ALT0_VENDOR := Phicomm
-  DEVICE_ALT0_MODEL := K2P
-  SUPPORTED_DEVICES += K2P
+  DEVICE_ALT0_MODEL := KE 2P
+  SUPPORTED_DEVICES += k2p
   DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools
 endef
 TARGET_DEVICES += phicomm_k2p
@@ -2019,9 +2019,10 @@ define Device/phicomm_k2p_usb
   $(Device/dsa-migration)
   IMAGE_SIZE := 15744k
   DEVICE_VENDOR := Phicomm
-  DEVICE_MODEL := K2P_USB
+  DEVICE_MODEL := K2P
   DEVICE_ALT0_VENDOR := Phicomm
-  DEVICE_ALT0_MODEL := K2P_USB
+  DEVICE_ALT0_MODEL := KE 2P
+  SUPPORTED_DEVICES += k2p
   DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools kmod-usb3 kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += phicomm_k2p_usb
@@ -2056,9 +2057,9 @@ define Device/raisecom_msg1500-x-00_16M
   DEVICE_VENDOR := raisecom
   DEVICE_MODEL := msg1500
   DEVICE_VARIANT := x-00_16M
-  DEVICE_ALT0_VENDOR := raisecom
-  DEVICE_ALT0_MODEL := msg1500
-  SUPPORTED_DEVICES += msg1500
+  DEVICE_ALT0_VENDOR := Phicomm
+  DEVICE_ALT0_MODEL := KE 2P
+  SUPPORTED_DEVICES += k2p
   DEVICE_PACKAGES := kmod-mt7615-firmware kmod-usb3 \
 	kmod-usb-ledtrig-usbport -uboot-envtools
 endef

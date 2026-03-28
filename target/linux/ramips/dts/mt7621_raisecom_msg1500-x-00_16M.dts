@@ -7,8 +7,8 @@
 #include <dt-bindings/leds/common.h>
 
 / {
-	compatible = "raisecom,msg1500-x-00_16M", "mediatek,mt7621-soc";
-	model = "raisecom msg1500 x-00_16M";
+	compatible = "raisecom,msg1500-x-00-16M", "mediatek,mt7621-soc";
+	model = "raisecom msg1500 x-00-16M";
 
 	aliases {
 		led-boot = &led_usb;

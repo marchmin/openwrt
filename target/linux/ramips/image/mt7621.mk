@@ -2041,11 +2041,11 @@ define Device/raisecom_msg1500-x-00
   $(Device/nand)
   $(Device/uimage-lzma-loader)
   IMAGE_SIZE := 129280k
-  DEVICE_VENDOR := Raisecom
-  DEVICE_MODEL := Msg1500
-  DEVICE_VARIANT := X.00
-  DEVICE_ALT0_VENDOR := Raisecom
-  DEVICE_ALT0_MODEL := Msg1500
+  DEVICE_VENDOR := raisecom
+  DEVICE_MODEL := msg1500
+  DEVICE_VARIANT := x-00
+  DEVICE_ALT0_VENDOR := raisecom
+  DEVICE_ALT0_MODEL := msg1500
   DEVICE_PACKAGES := kmod-mt7615-firmware kmod-usb3 kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += raisecom_msg1500-x-00
@@ -2053,11 +2053,11 @@ TARGET_DEVICES += raisecom_msg1500-x-00
 define Device/raisecom_msg1500-x-00_16M
   $(Device/dsa-migration)
   IMAGE_SIZE := 15744k
-  DEVICE_VENDOR := Raisecom
-  DEVICE_MODEL := Msg1500
-  DEVICE_VARIANT := X.00_16M
-  DEVICE_ALT0_VENDOR := Raisecom
-  DEVICE_ALT0_MODEL := Msg1500
+  DEVICE_VENDOR := raisecom
+  DEVICE_MODEL := msg1500
+  DEVICE_VARIANT := x-00_16M
+  DEVICE_ALT0_VENDOR := raisecom
+  DEVICE_ALT0_MODEL := msg1500
   DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools kmod-usb3 kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += raisecom_msg1500-x-00_16M

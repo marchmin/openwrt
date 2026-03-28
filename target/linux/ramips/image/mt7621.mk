@@ -2015,17 +2015,16 @@ endef
 TARGET_DEVICES += phicomm_k2p
 
 
-define Device/phicomm_k2p_usb
+define Device/phicomm_k2p-usb
   $(Device/dsa-migration)
   IMAGE_SIZE := 15744k
   DEVICE_VENDOR := Phicomm
   DEVICE_MODEL := K2P
   DEVICE_ALT0_VENDOR := Phicomm
   DEVICE_ALT0_MODEL := KE 2P
-  SUPPORTED_DEVICES += k2p
   DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools kmod-usb3 kmod-usb-ledtrig-usbport
 endef
-TARGET_DEVICES += phicomm_k2p_usb
+TARGET_DEVICES += phicomm_k2p-usb
 
 define Device/planex_vr500
   $(Device/dsa-migration)
@@ -2051,18 +2050,18 @@ define Device/raisecom_msg1500-x-00
 endef
 TARGET_DEVICES += raisecom_msg1500-x-00
 
-define Device/raisecom_msg1500-x-00_16M
+define Device/raisecom_msg1500-x-00-16M
   $(Device/dsa-migration)
   IMAGE_SIZE := 15744k
   DEVICE_VENDOR := raisecom
   DEVICE_MODEL := msg1500
-  DEVICE_VARIANT := x-00_16M
+  DEVICE_VARIANT := x-00-16M
   DEVICE_ALT0_VENDOR := Nokia
   DEVICE_ALT0_MODEL := A-040W-Q
   DEVICE_PACKAGES := kmod-mt7615-firmware kmod-usb3 \
 	kmod-usb-ledtrig-usbport -uboot-envtools
 endef
-TARGET_DEVICES += raisecom_msg1500-x-00_16M
+TARGET_DEVICES += raisecom_msg1500-x-00-16M
 
 define Device/renkforce_ws-wn530hp3-a
   $(Device/dsa-migration)

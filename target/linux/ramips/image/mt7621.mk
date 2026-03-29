@@ -2058,7 +2058,7 @@ define Device/raisecom_msg1500-x-00-16M
   DEVICE_VARIANT := x-00-16M
   DEVICE_ALT0_VENDOR := Phicomm
   DEVICE_ALT0_MODEL := KE 2P
-  DEVICE_PACKAGES := kmod-mt7615-firmware kmod-usb3 \
+  DEVICE_PACKAGES := kmod-mt7615-firmware \
 	kmod-usb-ledtrig-usbport -uboot-envtools
 endef
 TARGET_DEVICES += raisecom_msg1500-x-00-16M

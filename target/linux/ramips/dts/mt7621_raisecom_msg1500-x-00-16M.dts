@@ -11,9 +11,9 @@
 	model = "raisecom msg1500 x-00-16M";
 
 	aliases {
-		led-boot = &usb;
-		led-failsafe = &usb;
-		led-upgrade = &usb;
+		led-boot = &led_usb;
+		led-failsafe = &led_usb;
+		led-upgrade = &led_usb;
 		label-mac-device = &gmac0;
 	};
 
@@ -36,7 +36,7 @@
 			linux,default-trigger = "phy1radio";
 		};
 
-		 usb {
+		led_usb: usb {
 			label = "blue:usb";
 			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
 			trigger-sources = <&ehci_port2>;

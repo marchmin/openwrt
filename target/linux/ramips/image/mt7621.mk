@@ -2023,7 +2023,7 @@ define Device/phicomm_k2p-usb
   DEVICE_ALT0_VENDOR := Phicomm
   DEVICE_ALT0_MODEL := KE 2P
   DEVICE_PACKAGES := kmod-mt7615-firmware -uboot-envtools \
-     kmod-usb2 kmod-usb-ledtrig-usbport
+     kmod-usb3 kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += phicomm_k2p-usb
 

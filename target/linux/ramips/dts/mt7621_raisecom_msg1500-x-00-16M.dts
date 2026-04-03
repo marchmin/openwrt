@@ -8,7 +8,7 @@
 
 / {
 	compatible = "raisecom,msg1500-x-00-16M", "mediatek,mt7621-soc";
-	model = "raisecom msg1500 x-00-16M";
+	model = "raisecom msg1500 x-00";
 
 	aliases {
 		led-boot = &led_usb;

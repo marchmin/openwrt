@@ -11,9 +11,6 @@
 	model = "raisecom msg1500 x-00";
 
 	aliases {
-		#led-boot = &led_usb;
-		#led-failsafe = &led_usb;
-		#led-upgrade = &led_usb;
 		label-mac-device = &gmac0;
 	};
 

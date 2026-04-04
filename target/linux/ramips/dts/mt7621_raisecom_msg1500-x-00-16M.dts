@@ -36,7 +36,10 @@
 			linux,default-trigger = "phy1radio";
 		};
 
-		led_usb: usb {
+		led_usb:usb{
+		};
+
+		usb {
 			label = "blue:usb";
 			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
 			trigger-sources = <&ehci_port2>;

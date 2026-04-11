@@ -253,6 +253,16 @@ define Device/iodata_wn-gx300gr
 endef
 TARGET_DEVICES += iodata_wn-gx300gr
 
+define Device/msg1500-x-00-16M
+  DTS := msg1500-x-00-16M
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := raisecom msg1500 x-00-16M
+  DEVICE_PACKAGES := \
+	kmod-mt7615e kmod-usb3 kmod-usb-ledtrig-usbport wpad-basic \
+	uboot-envtools
+endef
+TARGET_DEVICES += msg1500-x-00-16M
+
 define Device/k2p
   DTS := K2P
   IMAGE_SIZE := $(ralink_default_fw_size_16M)
